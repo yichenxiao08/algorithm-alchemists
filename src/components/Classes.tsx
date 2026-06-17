@@ -1,7 +1,7 @@
-import advanced from "../assets/advanced.jpg";
-import webdev from "../assets/webdev.jpg";
-import intermediate from "../assets/intermediate.jpg";
-import beginner from "../assets/beginner.jpg";
+import advanced from "../../assets/advanced.jpg";
+import webdev from "../../assets/webdev.jpg";
+import intermediate from "../../assets/intermediate.jpg";
+import beginner from "../../assets/beginner.jpg";
 import { motion } from "motion/react";
 
 export default function Classes() {
@@ -12,9 +12,9 @@ export default function Classes() {
       img: beginner,
       color: "#3B82F6",
       level: "Beginner",
-      duration: "12 weeks",
-      schedule: "Saturdays, 1:30 PM to 3:00 PM EST",
-      startDate: "December 6, 2025",
+      duration: "8 weeks",
+      schedule: "Sundays, 12:00 PM to 1:30 PM EST",
+      startDate: "July 5, 2026",
       details: {
         description: "Covers the basics of programming in Python.",
         whatYouLearn: [
@@ -38,9 +38,9 @@ export default function Classes() {
       img: intermediate,
       color: "#E66A9B",
       level: "Intermediate",
-      duration: "Runs until February 2026",
-      schedule: "Sundays, 7:30 PM to 9:00 PM EST",
-      startDate: "December 7, 2025",
+      duration: "Runs until September 2026",
+      schedule: "Thursdays, 7:00 PM to 8:30 PM EST",
+      startDate: "July 9, 2026",
       details: {
         description:
           "Covers the basics of competitive programming in Python and Java​ in preparation for the CCC Junior Division.",
@@ -65,9 +65,9 @@ export default function Classes() {
       img: advanced,
       color: "#F59E0B",
       level: "Advanced",
-      duration: "Runs until February 2026",
-      schedule: "Saturdays, 12:00 PM to 1:30 PM EST",
-      startDate: "December 6, 2025",
+      duration: "Runs until September 2026",
+      schedule: "Sundays, 12:00 PM to 1:30 PM EST",
+      startDate: "July 5, 2026",
       details: {
         description:
           "Covers more advanced competitive programming concepts in Python, Java, C++ in preparation for the CCC Senior Division.",
@@ -90,9 +90,9 @@ export default function Classes() {
       img: webdev,
       color: "#8B5CF6",
       level: "All",
-      duration: "Runs until May 2026",
-      schedule: "Every other Friday, 7:00 PM to 8:30 PM EST",
-      startDate: "December 5, 2025",
+      duration: "Runs until September 2026",
+      schedule: "Every Monday, 7:00 PM to 8:30 PM EST",
+      startDate: "July 6, 2026",
       details: {
         description:
           "Covers all you need to create polished, functional websites, which are perfect for hackathons and personal projects!",
@@ -327,7 +327,7 @@ export default function Classes() {
                           <h4 className="text-2xl font-bold mb-4">
                             What You'll Learn
                           </h4>
-                          <motion.ul 
+                          <motion.ul
                             className="space-y-2"
                             initial="hidden"
                             whileInView="visible"
@@ -335,9 +335,9 @@ export default function Classes() {
                             variants={{
                               visible: {
                                 transition: {
-                                  staggerChildren: 0.075
-                                }
-                              }
+                                  staggerChildren: 0.075,
+                                },
+                              },
                             }}
                           >
                             {course.details.whatYouLearn.map((item, idx) => (
@@ -346,7 +346,7 @@ export default function Classes() {
                                 className="flex items-start"
                                 variants={{
                                   hidden: { opacity: 0, x: -20 },
-                                  visible: { opacity: 1, x: 0 }
+                                  visible: { opacity: 1, x: 0 },
                                 }}
                                 transition={{ duration: 0.3 }}
                               >
