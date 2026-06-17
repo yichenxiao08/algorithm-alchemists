@@ -1,7 +1,7 @@
-import advanced from "../../assets/advanced.jpg";
-import webdev from "../../assets/webdev.jpg";
-import intermediate from "../../assets/intermediate.jpg";
-import beginner from "../../assets/beginner.jpg";
+import advanced from "../assets/advanced.jpg";
+import webdev from "../assets/webdev.jpg";
+import intermediate from "../assets/intermediate.jpg";
+import beginner from "../assets/beginner.jpg";
 import { motion } from "motion/react";
 
 export default function Classes() {
@@ -327,7 +327,7 @@ export default function Classes() {
                           <h4 className="text-2xl font-bold mb-4">
                             What You'll Learn
                           </h4>
-                          <motion.ul
+                          <motion.ul 
                             className="space-y-2"
                             initial="hidden"
                             whileInView="visible"
@@ -335,9 +335,9 @@ export default function Classes() {
                             variants={{
                               visible: {
                                 transition: {
-                                  staggerChildren: 0.075,
-                                },
-                              },
+                                  staggerChildren: 0.075
+                                }
+                              }
                             }}
                           >
                             {course.details.whatYouLearn.map((item, idx) => (
@@ -346,7 +346,7 @@ export default function Classes() {
                                 className="flex items-start"
                                 variants={{
                                   hidden: { opacity: 0, x: -20 },
-                                  visible: { opacity: 1, x: 0 },
+                                  visible: { opacity: 1, x: 0 }
                                 }}
                                 transition={{ duration: 0.3 }}
                               >
