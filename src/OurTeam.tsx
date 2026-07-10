@@ -22,6 +22,13 @@ import garyFu from "./assets/pfps/gary fu.avif";
 import weizhongXia from "./assets/pfps/weizhong xia.avif";
 import yichenXiao from "./assets/pfps/yichen xiao.avif";
 import zongqiaoZhou from "./assets/pfps/zongqiao zhou.avif";
+
+import danielGuo from "./assets/pfps/danielGuo.png";
+import jaydenFu from "./assets/pfps/jaydenFu.png";
+import jonathanGu from "./assets/pfps/jonathanGu.png";
+import lucasChan from "./assets/pfps/lucasChan.png";
+import samitHegde from "./assets/pfps/samitHegde.png";
+
 import EmblaCarousel from "./components/EmblaCarousel";
 import SpotlightCard from "./components/SpotlightCard";
 import Footer from "./components/Footer";
