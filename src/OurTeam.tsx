@@ -103,18 +103,43 @@ export default function OurTeam() {
                 image: patrickZhang,
               },
               {
-                name: "Jeffrey Wang",
-                title:
-                  "Vice-President & Founder / Junior Class Lead / Outreach Coordinator",
+                name: "Ethan Guan",
+                title: "Vice President / Senior Class Lead / Marketing",
                 description:
-                  "Canadian Computing Competition (CCC) Junior Division Distinction",
-                image: jeffreyWang,
+                  "Canadian Computing Competition (CCC) Junior Division Honour Roll",
+                image: ethanGuan,
               },
               {
-                name: "Ethan Leung",
-                title:
-                  "Vice-President / Intermediate Class Teacher / Marketing",
-                image: ethanLeung,
+                name: "Justin Wen Hao Wu",
+                title: "Vice President / Senior Class Teacher",
+                description:
+                  "Canadian Computing Competition (CCC) Junior Division Honour Roll",
+                image: justinWu,
+              },
+              {
+                name: "Samit Hegde",
+                title: "Web Dev Lead Teacher / Marketing",
+                image: samitHegde,
+              },
+              {
+                name: "Daniel Guo",
+                title: "Intermediate Class Teacher",
+                image: danielGuo,
+              },
+              {
+                name: "Jayden Fu",
+                title: "Intermediate Class Teacher",
+                image: jaydenFu,
+              },
+              {
+                name: "Lucas Chan",
+                title: "Junior Class Teacher / Marketing",
+                image: lucasChan,
+              },
+              {
+                name: "Jonathan Gu",
+                title: "Junior Class Teacher",
+                image: jonathanGu,
               },
               {
                 name: "Eric Wang",
@@ -124,60 +149,62 @@ export default function OurTeam() {
                 image: ericWangPfp,
               },
               {
+                name: "Jeffrey Wang",
+                title:
+                  "Former Vice-President & Founder / Junior Class Lead / Outreach Coordinator",
+                description:
+                  "Canadian Computing Competition (CCC) Junior Division Distinction",
+                image: jeffreyWang,
+              },
+              {
+                name: "Ethan Leung",
+                title:
+                  "Former Vice-President / Intermediate Class Teacher / Marketing",
+                image: ethanLeung,
+              },
+              {
                 name: "Brian Ge",
                 title:
-                  "Senior Class Lead Teacher / Intermediate Teacher / Outreach Coordinator",
+                  "Former Senior Class Lead Teacher / Intermediate Teacher / Outreach Coordinator",
                 description:
                   "Canadian Computing Competition (CCC) Senior Division Distinction",
                 image: brianGe,
               },
               {
                 name: "Yichen Xiao",
-                title: "Web Dev Lead Teacher / Website Developer",
+                title: "Former Web Dev Lead Teacher / Website Developer",
                 description:
                   "Canadian Computing Competition (CCC) Senior Division Distinction",
                 image: yichenXiao,
               },
               {
-                name: "Ethan Guan",
-                title: "Senior Class Teacher",
-                image: ethanGuan,
-              },
-              {
-                name: "Justin Wen Hao Wu",
-                title: "Senior Class Teacher",
-                description:
-                  "Canadian Computing Competition (CCC) Junior Division Honour Roll",
-                image: justinWu,
-              },
-              {
                 name: "Elina Khan",
-                title: "Head Public Relations Officer",
+                title: "Former Head Public Relations Officer",
                 image: elinaKhan,
               },
               {
                 name: "Chloe Chu",
-                title: "Public Relations Officer",
+                title: "Former Public Relations Officer",
                 image: chloeChu,
               },
               {
                 name: "Kaley Wu",
-                title: "Junior Class Teacher",
+                title: "Former Junior Class Teacher",
                 image: kaleyWu,
               },
               {
                 name: "Soroush Paidar",
-                title: "Junior Class Teacher",
+                title: "Former Junior Class Teacher",
                 image: soroushPaidar,
               },
               {
                 name: "Siddh Mistry",
-                title: "Intermediate Class Teacher",
+                title: "Former Intermediate Class Teacher",
                 image: siddhMistry,
               },
               {
                 name: "Gary Fu",
-                title: "Intermediate Class Teacher",
+                title: "Former Intermediate Class Teacher",
                 image: garyFu,
               },
               {
