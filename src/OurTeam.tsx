@@ -25,7 +25,7 @@ import zongqiaoZhou from "./assets/pfps/zongqiao zhou.avif";
 
 import danielGuo from "./assets/pfps/danielGuo (2).png";
 import jaydenFu from "./assets/pfps/jaydenFu (1).png";
-import jonathanGu from "./assets/pfps/jonathanGu.png";
+import jonathanGu from "./assets/pfps/jonathanGu (1).png";
 import lucasChan from "./assets/pfps/lucasChan (1).png";
 import samitHegde from "./assets/pfps/samitHegde.png";
 
