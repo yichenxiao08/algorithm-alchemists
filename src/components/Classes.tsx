@@ -14,7 +14,7 @@ export default function Classes() {
       level: "Beginner",
       duration: "8 weeks",
       schedule: "Sundays, 12:00 PM to 1:30 PM EST",
-      startDate: "July 5, 2026",
+      startDate: "July 19, 2026",
       details: {
         description: "Covers the basics of programming in Python.",
         whatYouLearn: [
@@ -40,7 +40,7 @@ export default function Classes() {
       level: "Intermediate",
       duration: "Runs until September 2026",
       schedule: "Thursdays, 7:00 PM to 8:30 PM EST",
-      startDate: "July 9, 2026",
+      startDate: "July 23, 2026",
       details: {
         description:
           "Covers the basics of competitive programming in Python and Java​ in preparation for the CCC Junior Division.",
@@ -67,7 +67,7 @@ export default function Classes() {
       level: "Advanced",
       duration: "Runs until September 2026",
       schedule: "Sundays, 12:00 PM to 1:30 PM EST",
-      startDate: "July 5, 2026",
+      startDate: "July 19, 2026",
       details: {
         description:
           "Covers more advanced competitive programming concepts in Python, Java, C++ in preparation for the CCC Senior Division.",
@@ -92,7 +92,7 @@ export default function Classes() {
       level: "All",
       duration: "Runs until September 2026",
       schedule: "Every Monday, 7:00 PM to 8:30 PM EST",
-      startDate: "July 6, 2026",
+      startDate: "July 20, 2026",
       details: {
         description:
           "Covers all you need to create polished, functional websites, which are perfect for hackathons and personal projects!",
