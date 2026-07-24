@@ -1,12 +1,16 @@
 import TextType from "@/components/TextType";
+import Magnetic from "@/components/Magnetic";
 import { motion, useReducedMotion } from "motion/react";
 import { useState, useEffect } from "react";
-import { ChevronDown } from "lucide-react";
+import { ChevronDown, ArrowRight } from "lucide-react";
 import {
   enrollment,
   getCountdownParts,
   type CountdownParts,
 } from "@/data/enrollment";
+import { Badge } from "@/components/ui/badge";
+import { Button } from "@/components/ui/button";
+import { Separator } from "@/components/ui/separator";
 
 const HACK_CLUB_ICON = "https://assets.hackclub.com/icon-rounded.svg";
 
@@ -54,10 +58,7 @@ export default function Header() {
   }, []);
 
   const handleLearnMoreClick = () => {
-    const successSection = document.getElementById("success");
-    if (successSection) {
-      successSection.scrollIntoView({ behavior: "smooth" });
-    }
+    document.getElementById("proof")?.scrollIntoView({ behavior: "smooth" });
   };
 
   const pad = (n: number) => String(n).padStart(2, "0");
@@ -65,15 +66,28 @@ export default function Header() {
     reduceMotion
       ? { initial: false as const, animate: { opacity: 1 } }
       : {
-          initial: { opacity: 0, y: 20 },
+          initial: { opacity: 0, y: 24 },
           animate: { opacity: 1, y: 0 },
-          transition: { ease: "easeOut" as const, duration: 0.55, delay },
+          transition: { ease: "easeOut" as const, duration: 0.6, delay },
         };
 
   return (
     <>
       <div className="relative mb-8 flex h-full flex-col items-center justify-center pt-28 pb-16 text-center sm:pt-32">
-        <div className="mb-6 text-[clamp(2.5rem,8vw,5.5rem)] font-extrabold leading-[1.05] tracking-tight">
+        <motion.div {...fade(0)} className="mb-5">
+          <Badge variant="secondary" className="gap-1.5 px-3 py-1" asChild>
+            <a
+              href="https://discord.gg/GeMTYUsmjK"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              🏆 Also happening: Algorithm Alchemists Coding Competition — August
+              2026 ⚡
+            </a>
+          </Badge>
+        </motion.div>
+
+        <div className="mb-6 text-[clamp(2.5rem,8vw,5.5rem)] leading-[1.05] font-extrabold tracking-tight">
           <TextType
             constText="Unlock your "
             text={HERO_TYPED_PHRASES}
@@ -84,7 +98,7 @@ export default function Header() {
             cursorCharacter="|"
             loop={true}
             textColors={HERO_TYPED_COLORS}
-            className="text-white"
+            className="text-foreground"
           />
         </div>
 
@@ -95,60 +109,61 @@ export default function Header() {
         </motion.div>
 
         <motion.div {...fade(0.4)} className="w-full max-w-3xl">
-          <p className="mx-auto mb-8 max-w-2xl text-base leading-relaxed text-white/65 sm:text-lg">
-            Improve your programming skills by building real projects, tackling
-            interesting problems, and connecting with a thriving community.
+          <p className="mx-auto mb-8 max-w-2xl text-base leading-relaxed text-muted-foreground sm:text-lg">
+            Specialized Canadian Computing Competition prep from near-peer
+            mentors with CCC Honour Roll, Distinction, and top university
+            acceptances.
           </p>
 
           <div className="mb-8 flex flex-col items-center gap-3 sm:flex-row sm:flex-wrap sm:justify-center sm:gap-x-5 sm:gap-y-2">
-            <p className="text-sm text-white/70 sm:text-[0.95rem]">
-              <span className="font-semibold text-white">100,000+</span> people
-              reached
+            <p className="text-sm text-muted-foreground sm:text-[0.95rem]">
+              <span className="font-semibold text-foreground">100,000+</span>{" "}
+              people reached
             </p>
-            <span
-              className="hidden h-3 w-px bg-white/20 sm:block"
-              aria-hidden
+            <Separator
+              orientation="vertical"
+              className="hidden h-3 sm:block"
             />
-            <p className="text-sm text-white/70 sm:text-[0.95rem]">
-              <span className="font-semibold text-white">30+</span> CCC
+            <p className="text-sm text-muted-foreground sm:text-[0.95rem]">
+              <span className="font-semibold text-foreground">30+</span> CCC
               distinctions (2025)
             </p>
-            <span
-              className="hidden h-3 w-px bg-white/20 sm:block"
-              aria-hidden
+            <Separator
+              orientation="vertical"
+              className="hidden h-3 sm:block"
             />
             <a
               href="https://hackclub.com/"
               target="_blank"
               rel="noopener noreferrer"
-              className="inline-flex items-center gap-2 rounded-full border border-white/10 bg-white/[0.03] px-3 py-1 text-sm text-white/75 backdrop-blur-sm transition-colors duration-200 hover:border-white/25 hover:bg-white/[0.06] hover:text-white"
+              className="inline-flex items-center gap-2 rounded-full border border-white/10 bg-white/[0.03] px-3 py-1 text-sm text-muted-foreground backdrop-blur-sm transition-colors duration-200 hover:border-white/25 hover:bg-white/[0.06] hover:text-foreground"
             >
               <img
                 src={HACK_CLUB_ICON}
                 alt=""
-                className="h-5 w-5 rounded-sm"
+                className="size-5 rounded-sm"
               />
               <span>Hack Club registered</span>
             </a>
           </div>
 
-          <div className="mb-8 mx-auto max-w-lg">
-            <p className="text-sm text-white/55">
+          <div className="mx-auto mb-8 max-w-lg">
+            <p className="text-sm text-muted-foreground">
               Next cohort starts{" "}
-              <span className="text-white/85">
+              <span className="text-foreground/85">
                 {enrollment.cohortStartLabel}
               </span>{" "}
               — closes{" "}
-              <span className="text-white/85">
+              <span className="text-foreground/85">
                 {enrollment.enrollmentClosesLabel}
               </span>
-              <span className="text-white/35"> · </span>
+              <span className="text-foreground/35"> · </span>
               Limited to {enrollment.maxStudentsPerClass} per class
             </p>
 
             {!countdown.expired && (
               <p
-                className="mt-3 font-mono text-sm tabular-nums tracking-wide text-white/70 sm:text-base"
+                className="mt-3 font-mono text-sm tracking-wide text-muted-foreground tabular-nums sm:text-base"
                 aria-live="polite"
                 aria-label="Enrollment countdown"
               >
@@ -158,35 +173,24 @@ export default function Header() {
             )}
           </div>
 
-          <div className="flex flex-wrap items-center justify-center gap-3 sm:gap-4">
-            <a
-              href="/sign-up"
-              className="inline-flex rounded-lg bg-blue-600 px-8 py-3 font-semibold text-white shadow-[0_0_0_1px_rgba(59,130,246,0.35)] transition-[background-color,transform] duration-200 ease-out hover:bg-blue-500 [@media(hover:hover)_and_(pointer:fine)]:hover:-translate-y-0.5 motion-reduce:transform-none"
-            >
-              Find Your Child&apos;s Level
-            </a>
-            <a
-              href="https://forms.gle/smo5FH8unWtaScy57"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="inline-flex rounded-lg border border-blue-500/80 bg-transparent px-8 py-3 font-semibold text-blue-400 transition-[color,background-color,transform] duration-200 ease-out hover:bg-blue-600 hover:text-white [@media(hover:hover)_and_(pointer:fine)]:hover:-translate-y-0.5 motion-reduce:transform-none"
-            >
-              Volunteer With Us!
-            </a>
+          <div className="flex flex-wrap items-center justify-center">
+            <Magnetic>
+              <Button asChild size="lg" className="h-11 px-8 text-base font-semibold">
+                <a href="#classes">
+                  Explore Summer Classes
+                  <ArrowRight data-icon="inline-end" />
+                </a>
+              </Button>
+            </Magnetic>
           </div>
 
-          <p className="mt-3 text-sm text-white/50">
-            Not sure which class fits? Answer three questions — we&apos;ll
-            recommend the right track.
-          </p>
-
-          <p className="mt-5 text-sm text-white/35">
+          <p className="mt-5 text-sm text-muted-foreground/50">
             Thanks to Jukebox for our{" "}
             <a
               href="https://www.jukeboxprint.com/custom-stickers"
               target="_blank"
               rel="noopener noreferrer"
-              className="text-white/50 underline-offset-2 transition-colors hover:text-white/80 hover:underline"
+              className="text-foreground/50 underline-offset-2 transition-colors hover:text-foreground/80 hover:underline"
             >
               custom stickers
             </a>
@@ -203,14 +207,16 @@ export default function Header() {
             }}
             transition={{ duration: reduceMotion ? 0 : 0.45, ease: "easeOut" }}
           >
-            <button
+            <Button
               type="button"
-              className="p-1 text-white/40 transition-colors hover:text-white/70 motion-safe:animate-bounce"
+              variant="ghost"
+              size="icon-lg"
+              className="text-muted-foreground hover:text-foreground motion-safe:animate-bounce"
               onClick={handleLearnMoreClick}
-              aria-label="Scroll to about"
+              aria-label="Scroll to proof"
             >
-              <ChevronDown size={28} strokeWidth={1.75} />
-            </button>
+              <ChevronDown strokeWidth={1.75} />
+            </Button>
           </motion.div>
         </div>
       </div>

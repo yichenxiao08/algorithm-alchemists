@@ -1,69 +1,123 @@
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
+@import "tailwindcss";
+@import "tw-animate-css";
+@import "shadcn/tailwind.css";
+
+@custom-variant dark (&:is(.dark *));
+
+@theme inline {
+  --font-sans: "Outfit", ui-sans-serif, system-ui, sans-serif;
+  --font-heading: "Outfit", ui-sans-serif, system-ui, sans-serif;
+  --radius-sm: calc(var(--radius) - 4px);
+  --radius-md: calc(var(--radius) - 2px);
+  --radius-lg: var(--radius);
+  --radius-xl: calc(var(--radius) + 4px);
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-card: var(--card);
+  --color-card-foreground: var(--card-foreground);
+  --color-popover: var(--popover);
+  --color-popover-foreground: var(--popover-foreground);
+  --color-primary: var(--primary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-secondary: var(--secondary);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-accent: var(--accent);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-destructive: var(--destructive);
+  --color-border: var(--border);
+  --color-input: var(--input);
+  --color-ring: var(--ring);
+}
+
 :root {
-  font-family: "Outfit", sans-serif;
-  line-height: 1.5;
-  font-weight: 400;
-
-  color-scheme: light dark;
-  color: rgba(255, 255, 255, 0.87);
-
-  font-synthesis: none;
-  text-rendering: optimizeLegibility;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+  --radius: 0.625rem;
+  /* Brand: deep navy + blue (site is dark-only) */
+  --background: oklch(0.16 0.04 275);
+  --foreground: oklch(0.98 0.01 255);
+  --card: oklch(0.2 0.035 275);
+  --card-foreground: oklch(0.98 0.01 255);
+  --popover: oklch(0.18 0.04 275);
+  --popover-foreground: oklch(0.98 0.01 255);
+  --primary: oklch(0.62 0.19 255);
+  --primary-foreground: oklch(0.99 0.01 255);
+  --secondary: oklch(0.26 0.04 275);
+  --secondary-foreground: oklch(0.96 0.01 255);
+  --muted: oklch(0.24 0.03 275);
+  --muted-foreground: oklch(0.72 0.02 255);
+  --accent: oklch(0.28 0.05 275);
+  --accent-foreground: oklch(0.98 0.01 255);
+  --destructive: oklch(0.65 0.2 25);
+  --border: oklch(1 0 0 / 12%);
+  --input: oklch(1 0 0 / 14%);
+  --ring: oklch(0.62 0.19 255);
+  color-scheme: dark;
 }
 
-a {
-  font-weight: 500;
-  color: inherit;
-  text-decoration: inherit;
-}
+@layer base {
+  * {
+    @apply border-border outline-ring/50;
+  }
 
-html {
-  color-scheme: dark only !important;
-  background-color: #0f0f23 !important; /* or your preferred dark bg */
-  color: #ffffff !important;
-  overscroll-behavior: none;
-}
+  html {
+    color-scheme: dark;
+    background-color: #0f0f23;
+    color: #ffffff;
+    overscroll-behavior: none;
+    font-family: var(--font-sans);
+    font-synthesis: none;
+    text-rendering: optimizeLegibility;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
 
-body {
-  color-scheme: dark only !important;
-  background-color: #0f0f23 !important; /* or your preferred dark bg */
-  color: #ffffff !important;
-  margin: 0;
-  padding: 0;
-  min-width: 320px;
-  min-height: 100vh;
-  width: 100%;
-  height: 100vh;
-  overflow-x: hidden;
-  overscroll-behavior: none;
-}
+  body {
+    @apply bg-background text-foreground;
+    margin: 0;
+    padding: 0;
+    min-width: 320px;
+    min-height: 100vh;
+    width: 100%;
+    overflow-x: hidden;
+    overscroll-behavior: none;
+  }
 
-#root {
-  width: 100%;
-  height: 100%;
-  min-height: 100vh;
-}
+  #root {
+    width: 100%;
+    min-height: 100vh;
+  }
 
-h1 {
-  font-size: 3.2em;
-  line-height: 1.1;
-}
+  a {
+    font-weight: 500;
+    color: inherit;
+    text-decoration: inherit;
+  }
 
-button {
-  font-family: inherit;
-  cursor: pointer;
-}
-button:focus-visible {
-  outline: 2px solid rgba(59, 130, 246, 0.7);
-  outline-offset: 2px;
+  button {
+    font-family: inherit;
+    cursor: pointer;
+  }
+
+  button:focus-visible {
+    outline: 2px solid color-mix(in oklch, var(--primary) 70%, transparent);
+    outline-offset: 2px;
+  }
 }
 
 .no-overscroll {
   overscroll-behavior: none;
+}
+
+/* Atmospheric grain — premium-frontend-ui texture */
+.noise-overlay {
+  pointer-events: none;
+  position: fixed;
+  inset: 0;
+  z-index: 40;
+  opacity: 0.035;
+  mix-blend-mode: overlay;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
 }
 
 @media (prefers-reduced-motion: reduce) {

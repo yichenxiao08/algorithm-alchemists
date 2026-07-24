@@ -5,8 +5,8 @@ import Classes from "@/components/Classes";
 import Reviews from "@/components/Reviews";
 import Faq from "@/components/Faq";
 import Register from "@/components/Register";
-import StudentSuccess from "@/components/StudentSuccess";
-import InstructorTeaser from "@/components/InstructorTeaser";
+import Proof from "@/components/Proof";
+import WhyUs from "@/components/WhyUs";
 
 export default function HomePage() {
   return (
@@ -15,20 +15,18 @@ export default function HomePage() {
         <div className="h-screen px-8 md:px-12 lg:px-24">
           <Header />
         </div>
-        <div id="success">
-          <StudentSuccess />
-        </div>
-        <div id="about">
-          <About />
+        <div id="proof">
+          <Proof />
         </div>
         <div id="classes">
           <Classes />
         </div>
-        <div id="instructors">
-          <InstructorTeaser />
-        </div>
+        <WhyUs />
         <div id="reviews">
           <Reviews />
+        </div>
+        <div id="about">
+          <About />
         </div>
         <Faq />
         <div id="registration">

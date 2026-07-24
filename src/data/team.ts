@@ -81,7 +81,7 @@ export const ontarioTeam: TeamMember[] = [
     name: "Eric Wang",
     title: "Mentor / Former President & Founder",
     description:
-      "United States of America Computing Olympiad (USACO) Silver Division",
+      "Yale CS + Economics · Offers from CMU CS, UC Berkeley CS, Waterloo CS/SE · USACO Silver",
     image: ericWangPfp,
   },
   {
@@ -109,7 +109,7 @@ export const ontarioTeam: TeamMember[] = [
     name: "Yichen Xiao",
     title: "Former Web Dev Lead Teacher / Website Developer",
     description:
-      "Canadian Computing Competition (CCC) Senior Division Distinction",
+      "Waterloo Engineering · Offers from UofT Engineering & UofT CS · CCC Senior Distinction",
     image: yichenXiao,
   },
   {
@@ -130,6 +130,8 @@ export const ontarioTeam: TeamMember[] = [
   {
     name: "Soroush Paidar",
     title: "Former Junior Class Teacher",
+    description:
+      "UofT Math & Physics · Offers from UofT Math and Waterloo AFM",
     image: soroushPaidar,
   },
   {

@@ -1,80 +1,68 @@
 import about from "@/assets/about.png";
 import mission from "@/assets/mission.png";
 import approach from "@/assets/our_approach.jpg";
-import { motion } from "motion/react";
+import Reveal from "@/components/Reveal";
+import { Badge } from "@/components/ui/badge";
+
+const BLOCKS = [
+  {
+    title: "About Us",
+    image: about,
+    alt: "About Us",
+    imageFirst: true,
+    body: "Algorithm Alchemists is a student-run non-profit (registered under Hack Club) offering high-tier competitive programming prep — normally reserved for expensive corporate academies — at an accessible level for elementary and high school families. Our teachers are accomplished high schoolers with CCC and USACO credentials: near-peer role models who assign the right amount of homework so students master Python, then advance to harder languages and contest concepts.",
+  },
+  {
+    title: "Our Mission",
+    image: mission,
+    alt: "Our Mission",
+    imageFirst: false,
+    body: "At Algorithm Alchemists, our mission is to inspire and empower the next generation of coders. We believe that coding is an essential skill that can unlock limitless opportunities for students.",
+  },
+  {
+    title: "Our Approach",
+    image: approach,
+    alt: "Our Approach",
+    imageFirst: true,
+    body: "We take a hands-on approach to learning, with interactive lessons and coding challenges that keep students engaged and motivated.",
+  },
+] as const;
+
 export default function About() {
   return (
-    <div className="grid gap-8 px-8 lg:px-16 xl:px-24 lg:pt-24 min-h-screen">
-      <motion.div
-        initial={{ opacity: 0, y: 32 }}
-        whileInView={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.5 }}
-        viewport={{ once: true }}
-      >
-        <div className="flex flex-col lg:grid lg:grid-cols-2 gap-6 lg:gap-12 items-center mb-4">
-          <img
-            src={about}
-            alt="About Us"
-            className="rounded-xl border-gray-500 border h-64 lg:h-96 w-full max-w-md lg:max-w-none object-cover order-2 lg:order-1"
-          />
-          <div className="order-1 lg:order-2">
-            <div className="text-2xl font-semibold mb-4 text-center lg:text-left">About Us</div>
-            <div className="text-center lg:text-left">
-              Algorithm Alchemists is a student-run non-profit (registered under
-              Hack Club) offering high-tier competitive programming prep —
-              normally reserved for expensive corporate academies — at an
-              accessible level for elementary and high school families. Our
-              teachers are accomplished high schoolers with CCC and USACO
-              credentials: near-peer role models who assign the right amount of
-              homework so students master Python, then advance to harder
-              languages and contest concepts.
+    <div className="grid min-h-screen gap-12 px-8 lg:gap-16 lg:px-16 lg:pt-24 xl:px-24">
+      {BLOCKS.map((block) => (
+        <Reveal key={block.title}>
+          <div className="mb-4 flex flex-col items-center gap-6 lg:grid lg:grid-cols-2 lg:gap-12">
+            <img
+              src={block.image}
+              alt={block.alt}
+              className={`h-64 w-full max-w-md rounded-xl border border-white/15 object-cover lg:h-96 lg:max-w-none ${
+                block.imageFirst
+                  ? "order-2 lg:order-1"
+                  : "order-2 lg:order-2"
+              }`}
+            />
+            <div
+              className={
+                block.imageFirst
+                  ? "order-1 text-center lg:order-2 lg:text-left"
+                  : "order-1 text-center lg:order-1 lg:text-left"
+              }
+            >
+              <Badge variant="secondary" className="mb-3">
+                {block.title}
+              </Badge>
+              <h3 className="mb-4 text-2xl font-semibold tracking-tight">
+                {block.title}
+              </h3>
+              <p className="leading-relaxed text-muted-foreground">
+                {block.body}
+              </p>
             </div>
           </div>
-        </div>
-      </motion.div>
-      <motion.div
-        initial={{ opacity: 0, y: 32 }}
-        whileInView={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.5 }}
-        viewport={{ once: true }}
-      >
-        <div className="flex flex-col lg:grid lg:grid-cols-2 gap-6 lg:gap-12 items-center mb-4">
-          <div className="order-1 lg:order-1">
-            <div className="text-2xl font-semibold mb-4 text-center lg:text-left">Our Mission</div>
-            <div className="text-center lg:text-left">
-              At Algorithm Alchemists, our mission is to inspire and empower the
-              next generation of coders. We believe that coding is an essential
-              skill that can unlock limitless opportunities for students.
-            </div>
-          </div>
-          <img
-            src={mission}
-            alt="Our Mission"
-            className="rounded-xl border border-gray-500 h-64 lg:h-96 w-full max-w-md lg:max-w-none object-cover order-2 lg:order-2"
-          />
-        </div>
-      </motion.div>
-      <motion.div
-        initial={{ opacity: 0, y: 32 }}
-        whileInView={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.5 }}
-        viewport={{ once: true }}
-      >
-        <div className="flex flex-col lg:grid lg:grid-cols-2 gap-6 lg:gap-12 items-center">
-          <img
-            src={approach}
-            alt="Our Approach"
-            className="rounded-xl border border-gray-500 h-64 lg:h-96 w-full max-w-md lg:max-w-none object-cover order-2 lg:order-1"
-          />
-          <div className="order-1 lg:order-2">
-            <div className="text-2xl font-semibold mb-4 text-center lg:text-left">Our Approach</div>
-            <div className="text-center lg:text-left">
-              We take a hands-on approach to learning, with interactive lessons
-              and coding challenges that keep students engaged and motivated.
-            </div>
-          </div>
-        </div>
-      </motion.div>
+        </Reveal>
+      ))}
     </div>
   );
 }

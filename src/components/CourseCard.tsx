@@ -1,5 +1,8 @@
 import { motion } from "motion/react";
 import type { Course } from "@/data/courses";
+import { Button } from "@/components/ui/button";
+import { Badge } from "@/components/ui/badge";
+import Magnetic from "@/components/Magnetic";
 
 type CourseCardProps = {
   course: Course;
@@ -14,11 +17,13 @@ function CourseDetails({ course }: { course: Course }) {
         <p className="text-base lg:text-lg text-gray-200">{course.details.parentBenefit}</p>
       </div>
 
-      <div className="rounded-xl border border-white/10 bg-white/5 backdrop-blur-sm px-4 py-3">
-        <h4 className="text-sm font-semibold uppercase tracking-wide text-blue-300 mb-1">
+      <div className="rounded-xl border border-white/10 bg-white/5 px-4 py-3 backdrop-blur-sm">
+        <Badge variant="outline" className="mb-2">
           Who is this for?
-        </h4>
-        <p className="text-sm lg:text-base text-gray-300">{course.details.whoIsThisFor}</p>
+        </Badge>
+        <p className="text-sm text-muted-foreground lg:text-base">
+          {course.details.whoIsThisFor}
+        </p>
       </div>
 
       <div>
@@ -80,14 +85,13 @@ export default function CourseCard({ course, variant }: CourseCardProps) {
               </ul>
             </div>
           </div>
-          <a
-            href={course.link}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="mt-8 block w-full bg-blue-600 text-white py-3 px-6 rounded-lg font-semibold hover:bg-blue-700 transition-colors text-center"
-          >
-            Enroll Now
-          </a>
+          <Magnetic className="mt-8 w-full">
+            <Button asChild size="lg" className="w-full font-semibold">
+              <a href={course.link} target="_blank" rel="noopener noreferrer">
+                Enroll Now
+              </a>
+            </Button>
+          </Magnetic>
         </div>
       </div>
     );
@@ -130,11 +134,13 @@ export default function CourseCard({ course, variant }: CourseCardProps) {
               </div>
             </div>
 
-            <a href={course.link} target="_blank" rel="noopener noreferrer">
-              <button className="w-full bg-blue-600 text-white py-3 px-6 rounded-lg font-semibold hover:bg-blue-700 transition-colors">
-                Enroll Now
-              </button>
-            </a>
+            <Magnetic className="w-full">
+              <Button asChild size="lg" className="w-full font-semibold">
+                <a href={course.link} target="_blank" rel="noopener noreferrer">
+                  Enroll Now
+                </a>
+              </Button>
+            </Magnetic>
           </div>
         </div>
 

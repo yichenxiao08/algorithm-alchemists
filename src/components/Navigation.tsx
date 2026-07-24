@@ -1,167 +1,110 @@
 import { useState } from "react";
+import { Menu } from "lucide-react";
+import { motion } from "motion/react";
 import { useNavbarVisibility } from "@/hooks/useNavbarVisibility";
+import { Button } from "@/components/ui/button";
+import { Separator } from "@/components/ui/separator";
+import {
+  Sheet,
+  SheetContent,
+  SheetHeader,
+  SheetTitle,
+  SheetTrigger,
+} from "@/components/ui/sheet";
+import { cn } from "@/lib/utils";
+
+const LINKS = [
+  { href: "/#about", label: "About" },
+  { href: "/#classes", label: "Classes" },
+  { href: "/#reviews", label: "Reviews" },
+  { href: "/#faq", label: "FAQ" },
+  { href: "/our-team", label: "Our Team" },
+  { href: "/events", label: "Events" },
+  { href: "/contact", label: "Contact" },
+] as const;
 
 export default function Navigation() {
   const { isScrolled, isVisible } = useNavbarVisibility();
-  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+  const [open, setOpen] = useState(false);
 
   return (
-    <nav
-      className={`fixed top-0 left-0 w-full z-50 transition-all duration-300 ${
-        isScrolled ? "bg-black/30 backdrop-blur-md shadow-lg" : "bg-transparent"
-      } ${isVisible ? "translate-y-0" : "-translate-y-full"}`}
+    <motion.nav
+      className={cn(
+        "fixed top-0 left-0 z-50 w-full transition-[background-color,box-shadow,backdrop-filter] duration-300",
+        isScrolled
+          ? "border-b border-white/10 bg-background/55 shadow-lg backdrop-blur-md"
+          : "bg-transparent",
+      )}
+      animate={{ y: isVisible ? 0 : "-100%" }}
+      transition={{ duration: 0.28, ease: "easeOut" }}
     >
-      <div className="flex justify-between items-center py-4 px-4 sm:px-6 lg:px-8">
+      <div className="flex items-center justify-between px-4 py-4 sm:px-6 lg:px-8">
         <a href="/">
           <img
             src="/favicon.png"
             alt="Algorithm Alchemists"
-            className="h-8 sm:h-12 w-auto"
+            className="h-8 w-auto sm:h-12"
           />
         </a>
 
-        <div className="hidden md:flex space-x-4 lg:space-x-6 items-center">
-          <a
-            href="/#about"
-            className="text-white hover:text-gray-300 transition-colors text-sm lg:text-base"
-          >
-            About
-          </a>
-          <a
-            href="/#classes"
-            className="text-white hover:text-gray-300 transition-colors text-sm lg:text-base"
-          >
-            Classes
-          </a>
-          <a
-            href="/#reviews"
-            className="text-white hover:text-gray-300 transition-colors text-sm lg:text-base"
-          >
-            Reviews
-          </a>
-          <a
-            href="/#faq"
-            className="text-white hover:text-gray-300 transition-colors text-sm lg:text-base"
-          >
-            FAQ
-          </a>
-          <a
-            href="/our-team"
-            className="text-white hover:text-gray-300 transition-colors text-sm lg:text-base"
-          >
-            Our Team
-          </a>
-          <a
-            href="/events"
-            className="text-white hover:text-gray-300 transition-colors text-sm lg:text-base"
-          >
-            Events
-          </a>
-          <a
-            href="/contact"
-            className="text-white hover:text-gray-300 transition-colors text-sm lg:text-base"
-          >
-            Contact
-          </a>
-          <a
-            href="/sign-up"
-            className="text-white hover:text-gray-300 transition-colors"
-          >
-            <button className="bg-white text-purple-900 px-3 lg:px-4 py-1.5 lg:py-2 text-sm lg:text-lg font-bold rounded-3xl transition-all duration-300 shadow-lg transform hover:scale-105">
-              Sign Up
-            </button>
-          </a>
+        <div className="hidden items-center gap-1 md:flex lg:gap-2">
+          {LINKS.map((link) => (
+            <Button
+              key={link.href}
+              variant="ghost"
+              size="sm"
+              asChild
+              className="text-foreground/85 hover:text-foreground"
+            >
+              <a href={link.href}>{link.label}</a>
+            </Button>
+          ))}
+          <Button asChild size="lg" className="ml-2 rounded-full px-5 font-bold">
+            <a href="/sign-up">Sign Up</a>
+          </Button>
         </div>
 
-        <button
-          className="md:hidden flex flex-col space-y-1 p-2 bg-transparent"
-          onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
-          aria-label="Toggle mobile menu"
-        >
-          <div
-            className={`w-6 h-0.5 bg-white transition-all duration-300 ${
-              isMobileMenuOpen ? "rotate-45 translate-y-2" : ""
-            }`}
-          ></div>
-          <div
-            className={`w-6 h-0.5 bg-white transition-all duration-300 ${
-              isMobileMenuOpen ? "opacity-0" : ""
-            }`}
-          ></div>
-          <div
-            className={`w-6 h-0.5 bg-white transition-all duration-300 ${
-              isMobileMenuOpen ? "-rotate-45 -translate-y-2" : ""
-            }`}
-          ></div>
-        </button>
+        <Sheet open={open} onOpenChange={setOpen}>
+          <SheetTrigger asChild>
+            <Button
+              variant="ghost"
+              size="icon"
+              className="md:hidden"
+              aria-label="Open menu"
+            >
+              <Menu />
+            </Button>
+          </SheetTrigger>
+          <SheetContent
+            side="right"
+            className="border-l border-white/10 bg-background/95 backdrop-blur-xl"
+          >
+            <SheetHeader>
+              <SheetTitle>Menu</SheetTitle>
+            </SheetHeader>
+            <div className="mt-4 flex flex-col gap-1 px-2">
+              {LINKS.map((link) => (
+                <Button
+                  key={link.href}
+                  variant="ghost"
+                  className="justify-start text-base"
+                  asChild
+                >
+                  <a href={link.href} onClick={() => setOpen(false)}>
+                    {link.label}
+                  </a>
+                </Button>
+              ))}
+              <Separator className="my-3" />
+              <Button asChild size="lg" className="rounded-full font-bold">
+                <a href="/sign-up" onClick={() => setOpen(false)}>
+                  Sign Up
+                </a>
+              </Button>
+            </div>
+          </SheetContent>
+        </Sheet>
       </div>
-
-      <div
-        className={`md:hidden absolute top-full left-0 w-full bg-gray-900/95 backdrop-blur-md transition-all duration-300 ${
-          isMobileMenuOpen ? "opacity-100 visible" : "opacity-0 invisible"
-        }`}
-      >
-        <div className="flex flex-col space-y-4 p-6">
-          <a
-            href="/#about"
-            className="text-white hover:text-gray-300 transition-colors text-lg"
-            onClick={() => setIsMobileMenuOpen(false)}
-          >
-            About
-          </a>
-          <a
-            href="/#classes"
-            className="text-white hover:text-gray-300 transition-colors text-lg"
-            onClick={() => setIsMobileMenuOpen(false)}
-          >
-            Classes
-          </a>
-          <a
-            href="/#reviews"
-            className="text-white hover:text-gray-300 transition-colors text-lg"
-            onClick={() => setIsMobileMenuOpen(false)}
-          >
-            Reviews
-          </a>
-          <a
-            href="/#faq"
-            className="text-white hover:text-gray-300 transition-colors text-lg"
-            onClick={() => setIsMobileMenuOpen(false)}
-          >
-            FAQ
-          </a>
-          <a
-            href="/our-team"
-            className="text-white hover:text-gray-300 transition-colors text-lg"
-            onClick={() => setIsMobileMenuOpen(false)}
-          >
-            Our Team
-          </a>
-          <a
-            href="/events"
-            className="text-white hover:text-gray-300 transition-colors text-lg"
-            onClick={() => setIsMobileMenuOpen(false)}
-          >
-            Events
-          </a>
-          <a
-            href="/contact"
-            className="text-white hover:text-gray-300 transition-colors text-lg"
-            onClick={() => setIsMobileMenuOpen(false)}
-          >
-            Contact
-          </a>
-          <a
-            href="/sign-up"
-            className="text-white hover:text-gray-300 transition-colors"
-            onClick={() => setIsMobileMenuOpen(false)}
-          >
-            <button className="bg-white text-purple-900 px-6 py-3 text-lg font-bold rounded-3xl transition-all duration-300 shadow-lg transform hover:scale-105 w-full">
-              Sign Up
-            </button>
-          </a>
-        </div>
-      </div>
-    </nav>
+    </motion.nav>
   );
 }

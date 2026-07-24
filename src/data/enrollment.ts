@@ -5,7 +5,7 @@ export const enrollment = {
   cohortStartLabel: "July 26",
   enrollmentClosesLabel: "July 24",
   // TODO: confirm capacity
-  maxStudentsPerClass: 15,
+  maxStudentsPerClass: 25,
 };
 
 export type CountdownParts = {
