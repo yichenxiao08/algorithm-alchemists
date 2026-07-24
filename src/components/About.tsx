@@ -1,7 +1,7 @@
-import about from "../assets/about.png";
-import mission from "../assets/mission.png";
-import approach from "../assets/our_approach.jpg";
-import {motion} from "motion/react"
+import about from "@/assets/about.png";
+import mission from "@/assets/mission.png";
+import approach from "@/assets/our_approach.jpg";
+import { motion } from "motion/react";
 export default function About() {
   return (
     <div className="grid gap-8 px-8 lg:px-16 xl:px-24 lg:pt-24 min-h-screen">
@@ -20,13 +20,14 @@ export default function About() {
           <div className="order-1 lg:order-2">
             <div className="text-2xl font-semibold mb-4 text-center lg:text-left">About Us</div>
             <div className="text-center lg:text-left">
-              Algorithm Alchemists is a non-profit organization (registered
-              under Hack Club) that teaches coding to elementary and high school
-              students through online classes. We believe that learning to code
-              should be fun and engaging. Our passionate high school student
-              teachers provide the right amount of homework, so students can
-              master Python and move on to more advanced programming languages
-              and concepts.
+              Algorithm Alchemists is a student-run non-profit (registered under
+              Hack Club) offering high-tier competitive programming prep —
+              normally reserved for expensive corporate academies — at an
+              accessible level for elementary and high school families. Our
+              teachers are accomplished high schoolers with CCC and USACO
+              credentials: near-peer role models who assign the right amount of
+              homework so students master Python, then advance to harder
+              languages and contest concepts.
             </div>
           </div>
         </div>

@@ -66,9 +66,12 @@ const TextType = ({
   const cursorRef = useRef<HTMLSpanElement>(null);
   const containerRef = useRef<HTMLElement>(null);
 
+  // Key by content so parent re-renders with a fresh inline array
+  // (e.g. Header's countdown tick) don't restart the typing loop.
+  const textKey = Array.isArray(text) ? text.join("\0") : text;
   const textArray = useMemo(
-    () => (Array.isArray(text) ? text : [text]),
-    [text]
+    () => (textKey.includes("\0") ? textKey.split("\0") : [textKey]),
+    [textKey],
   );
 
   const getRandomSpeed = useCallback(() => {

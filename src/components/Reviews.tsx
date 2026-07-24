@@ -1,78 +1,87 @@
-"use client";
-import { motion, easeOut } from "framer-motion";
-import SpotlightCard from "./SpotlightCard";
-import fivestars from "../assets/5_stars.png";
+import { motion, easeOut, useReducedMotion } from "motion/react";
+import SpotlightCard from "@/components/SpotlightCard";
+import fivestars from "@/assets/5_stars.png";
+import { reviews, reviewInitials } from "@/data/reviews";
 
 export default function Reviews() {
-  const reviews = [
-    {
-      name: "Kenneth Lock",
-      role: "Student",
-      review:
-        "I took the junior class for learning Python. The teachers were very smart, helpful, and kind, and I learned a lot even without prior coding experience. I liked the quick homework feedback since I could fix mistakes ASAP. The program made me interested in programming, and I plan to continue with competitive programming classes :P",
-    },
-    {
-      name: "Emily Ng",
-      role: "Parent",
-      review:
-        "I'm very happy with the quality of education here. The teachers are great at helping my grade 2 child when they're confused. They explain things with simple comparisons. Well-spoken and very patient. Thank you for your hard work.",
-    },
-    {
-      name: "Jonathan Chen",
-      role: "Student",
-      review:
-        "I took the competitive programming class and got distinction for the 2024 junior and 2025 senior CCC. I always asked for extra help for homework, and the teachers were super helpful in answering questions. Even my parents are encouraging me to take more classes to prepare for the next CCC. Thanks a lot.",
-    },
-  ];
+  const reduceMotion = useReducedMotion();
 
-  // Framer Motion variants
   const containerVariants = {
     hidden: {},
     show: {
       transition: {
-        staggerChildren: 0.2, // delay between each review
+        staggerChildren: reduceMotion ? 0 : 0.14,
       },
     },
   };
 
   const itemVariants = {
-    hidden: { opacity: 0, y: 30 },
-    show: { opacity: 1, y: 0, transition: { duration: 0.6, ease: easeOut } },
+    hidden: reduceMotion ? { opacity: 1, y: 0 } : { opacity: 0, y: 28 },
+    show: {
+      opacity: 1,
+      y: 0,
+      transition: { duration: reduceMotion ? 0 : 0.55, ease: easeOut },
+    },
   };
 
   return (
-    <div className="px-8 lg:px-16 xl:px-24 ">
-      <motion.div 
-        initial={{ opacity: 0, y: 16 }}
+    <div className="px-8 py-8 lg:px-16 lg:py-12 xl:px-24">
+      <motion.div
+        initial={reduceMotion ? false : { opacity: 0, y: 16 }}
         whileInView={{ opacity: 1, y: 0 }}
-        transition={{ ease: "easeOut", duration: 0.5, delay: 0.25 }}
-        viewport={{ once: true }}
+        transition={{ ease: "easeOut", duration: 0.5 }}
+        viewport={{ once: true, margin: "-10%" }}
       >
-        <div className="font-bold text-4xl lg:text-5xl xl:text-6xl text-center mb-8">Reviews</div>
+        <h2 className="mb-3 text-center text-[clamp(2rem,5vw,3.75rem)] font-bold tracking-tight">
+          What Students & Parents Say
+        </h2>
+        <p className="mx-auto mb-10 max-w-xl text-center text-base text-white/55 sm:text-lg">
+          Voices from families who&apos;ve learned with us.
+        </p>
       </motion.div>
 
       <motion.div
-        className="flex flex-col md:grid md:grid-rows-1 md:grid-cols-3 gap-2 md:gap-8"
+        className="grid grid-cols-1 gap-5 md:grid-cols-3 md:gap-7"
         variants={containerVariants}
         initial="hidden"
         whileInView="show"
-        viewport={{ once: true }}
+        viewport={{ once: true, margin: "-8%" }}
       >
-        {reviews.map((review, idx) => (
-          <motion.div key={idx} variants={itemVariants} className="h-fit">
-            <SpotlightCard className="justify-center border-white shadow-gray-500 shadow-lg bg-slate-700/10 ">
-              <div className="text-lg lg:text-xl xl:text-2xl mb-4 text-center font-bold">
+        {reviews.map((review) => (
+          <motion.div
+            key={review.name}
+            variants={itemVariants}
+            className="h-full [@media(hover:hover)_and_(pointer:fine)]:transition-transform [@media(hover:hover)_and_(pointer:fine)]:duration-300 [@media(hover:hover)_and_(pointer:fine)]:hover:-translate-y-1"
+          >
+            <SpotlightCard className="h-full justify-start border-white/20 bg-white/[0.03] shadow-none backdrop-blur-[2px]">
+              <div className="mb-5 flex justify-center">
+                {review.image ? (
+                  <img
+                    src={review.image}
+                    alt={review.name}
+                    className="h-[4.5rem] w-[4.5rem] rounded-full object-cover ring-2 ring-white/20 ring-offset-2 ring-offset-[#0f0f23]"
+                  />
+                ) : (
+                  <div
+                    className="flex h-[4.5rem] w-[4.5rem] items-center justify-center rounded-full bg-gradient-to-br from-blue-500/50 to-blue-900/40 text-lg font-semibold tracking-wide ring-2 ring-white/15 ring-offset-2 ring-offset-[#0f0f23]"
+                    aria-hidden
+                  >
+                    {reviewInitials(review.name)}
+                  </div>
+                )}
+              </div>
+              <div className="mb-1 text-center text-lg font-bold tracking-tight lg:text-xl">
                 {review.name}
               </div>
-              <div className="text-center text-sm lg:text-md xl:text-lg font-semibold mb-2">
+              <div className="mb-3 text-center text-xs font-medium uppercase tracking-[0.16em] text-white/45">
                 {review.role}
               </div>
-              <div className="flex justify-center ">
-                <img src={fivestars} alt="5 stars" className="h-6 mb-4" />
+              <div className="mb-4 flex justify-center">
+                <img src={fivestars} alt="" className="h-5 opacity-90" />
               </div>
-              <div className="text-center text-sm lg:text-md xl:text-lg font-light">
-                "{review.review}"
-              </div>
+              <blockquote className="text-center text-[0.95rem] font-light leading-relaxed text-white/75 lg:text-base">
+                “{review.review}”
+              </blockquote>
             </SpotlightCard>
           </motion.div>
         ))}
