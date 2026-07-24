@@ -109,7 +109,7 @@ export const ontarioTeam: TeamMember[] = [
     name: "Yichen Xiao",
     title: "Former Web Dev Lead Teacher / Website Developer",
     description:
-      "Waterloo Engineering · Offers from UofT Engineering & UofT CS · CCC Senior Distinction",
+      "Waterloo Engineering · Offers from UofT Engineering, UofT CS & Tsinghua Computer Engineering · CCC Senior Distinction",
     image: yichenXiao,
   },
   {
