@@ -1,9 +1,9 @@
 // Single place to update enrollment urgency.
 export const enrollment = {
   // TODO: confirm close date with organizers
-  enrollmentClosesAt: "2026-07-26T23:59:59-04:00",
+  enrollmentClosesAt: "2026-08-02T23:59:59-04:00",
   cohortStartLabel: "July 26",
-  enrollmentClosesLabel: "July 26",
+  enrollmentClosesLabel: "August 2",
   // TODO: confirm capacity
   maxStudentsPerClass: 25,
 };

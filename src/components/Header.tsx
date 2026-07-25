@@ -77,7 +77,7 @@ export default function Header() {
         <motion.div {...fade(0)} className="mb-5">
           <Badge variant="secondary" className="gap-1.5 px-3 py-1" asChild>
             <a
-              href="https://discord.gg/GeMTYUsmjK"
+              href="https://forms.gle/NuWATf1Ci1S7ykKz7"
               target="_blank"
               rel="noopener noreferrer"
             >

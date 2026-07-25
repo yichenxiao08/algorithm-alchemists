@@ -17,7 +17,7 @@ function recommendCourse(answers: Answers): Course {
   const { grade, experience, goal } = answers;
 
   if (goal === "websites") {
-    return courses.find((c) => c.title === "Web Development Course")!;
+    return courses.find((c) => c.title === "Web Dev/Hackathon Bootcamp")!;
   }
   if (goal === "ccc-senior" || experience === "competitive") {
     return courses.find((c) => c.title === "Senior Course")!;

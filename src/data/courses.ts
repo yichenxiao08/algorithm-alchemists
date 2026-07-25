@@ -93,7 +93,7 @@ export const courses: Course[] = [
     },
   },
   {
-    title: "Web Development Course",
+    title: "Web Dev/Hackathon Bootcamp",
     link: "https://forms.gle/DLQGuKsehh7PRQya8",
     img: webdev,
     color: "#8B5CF6",
