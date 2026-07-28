@@ -42,7 +42,7 @@ export const ontarioTeam: TeamMember[] = [
     name: "Ethan Guan",
     title: "Co-President / Senior Class Lead / Marketing",
     description:
-      "Canadian Computing Competition (CCC) Junior Division Honour Roll",
+      "Canadian Computing Competition (CCC) Junior Division Honour Roll · Software Developer for STL VEX Robotics, NGNHacks & Algorithm Alchemists",
     image: ethanGuan,
   },
   {
@@ -55,11 +55,15 @@ export const ontarioTeam: TeamMember[] = [
   {
     name: "Samit Hegde",
     title: "Web Dev Lead Teacher / Marketing",
+    description:
+      "Software Developer for Hack404 — 200+ hackers over 36 hours in downtown Toronto",
     image: samitHegde,
   },
   {
     name: "Daniel Guo",
     title: "Intermediate Class Teacher",
+    description:
+      "Euclid Honour Roll (Group 5 x2, Group 4 x1) — 2024, 2025, 2026 · HOSA ILC Medical Math 2nd Place (2025) · CTMC at Waterloo 1st Place (perfect individual score) · Pascal Perfect Score · Cayley Distinction · COMC Distinction · Repechage/CJMO Qualifier x2 · AIME Qualifier x2",
     image: danielGuo,
   },
   {
