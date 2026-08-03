@@ -36,6 +36,8 @@ export const ontarioTeam: TeamMember[] = [
   {
     name: "Patrick Zhang",
     title: "Co-President / Web Development Teacher",
+    description:
+      "Euclid Honour Roll (2026) · COMC CMOQR Qualifier (Top 100 Canada) · Fermat Distinction — Group III (142) · Hypatia — Group 4 · CIMC School Champion · CUTC & JamHacks Shopify Promptathon",
     image: patrickZhang,
   },
   {
@@ -56,7 +58,7 @@ export const ontarioTeam: TeamMember[] = [
     name: "Samit Hegde",
     title: "Web Dev Lead Teacher / Marketing",
     description:
-      "Software Developer for Hack404 — 200+ hackers over 36 hours in downtown Toronto",
+      "Canadian Computing Competition (CCC) Senior Division Distinction · Software Developer for Hack404 — 200+ hackers over 36 hours in downtown Toronto",
     image: samitHegde,
   },
   {
