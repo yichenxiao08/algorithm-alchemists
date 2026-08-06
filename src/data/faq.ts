@@ -11,11 +11,6 @@ export const faqItems: FaqItem[] = [
     answer: `Classes are capped at ${enrollment.maxStudentsPerClass} students so every learner gets personalized attention from their instructor.`,
   },
   {
-    question: "What is the refund or cancellation policy?",
-    answer:
-      "Email algorithm.alchemists@gmail.com before enrolling and we’ll share the current refund and cancellation policy for your cohort.",
-  },
-  {
     question: "What software or hardware does my child need?",
     answer:
       "A computer with reliable internet and a modern browser. We’ll confirm any course-specific tools (like Python or VS Code) before the first session and help with setup if needed.",
